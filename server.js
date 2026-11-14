@@ -20,9 +20,15 @@ const SIGNUP_CREDITS = 10;
 const DAILY_CREDITS = 5;
 const DAY_MS = 24 * 60 * 60 * 1000;
 
-const DB_PATH = process.env.DB_PATH ||
+let DB_PATH = process.env.DB_PATH ||
   (fs.existsSync('/var/data') ? '/var/data/nova.db' : path.join(__dirname, 'data', 'nova.db'));
-fs.mkdirSync(path.dirname(DB_PATH), { recursive: true });
+try {
+  fs.mkdirSync(path.dirname(DB_PATH), { recursive: true });
+} catch (e) {
+  console.warn('Dossier inaccessible, utilisation du dossier local.');
+  DB_PATH = path.join(__dirname, 'data', 'nova.db');
+  fs.mkdirSync(path.dirname(DB_PATH), { recursive: true });
+}
 if (PROD && !DB_PATH.startsWith('/var/data')) {
   console.warn('ATTENTION : base hors disque persistant, les données seront perdues à chaque déploiement.');
 }
