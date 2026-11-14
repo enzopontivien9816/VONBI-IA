@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Espace Créateur - NOVA IA</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="/">NOVA IA</a>
+    <a href="/">Retour au site</a>
+  </header>
+  <main>
+    <h1>Espace Créateur</h1>
+
+    <section id="needLogin" class="card" hidden>
+      <p>Connectez-vous d'abord sur <a href="/">la page d'accueil</a>, puis revenez ici.</p>
+    </section>
+
+    <section id="setup" class="card" hidden>
+      <h2>Activer votre compte Créateur</h2>
+      <p class="lead">Saisissez la clé secrète définie sur Render (CREATOR_SETUP_KEY). Cette étape ne fonctionne qu'une seule fois.</p>
+      <form id="setupForm">
+        <label>Clé Créateur <input id="key" type="password" autocomplete="off" required></label>
+        <button type="submit">Activer</button>
+        <p id="setupMsg" class="msg" role="alert"></p>
+      </form>
+    </section>
+
+    <section id="panel" class="card" hidden>
+      <h2>Utilisateurs et crédits</h2>
+      <p id="panelMsg" class="msg" role="alert"></p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Pseudo</th><th>Rôle</th><th>Crédits</th><th>Ajuster (+/-)</th></tr></thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+  <script src="/api.js"></script>
+  <script src="/creator.js"></script>
+</body>
+</html>
