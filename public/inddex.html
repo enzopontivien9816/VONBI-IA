@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NOVA IA</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="/">NOVA IA</a>
+    <nav id="nav" hidden>
+      <span id="who"></span>
+      <span class="pill" id="credits"></span>
+      <a id="creatorLink" href="/creator-setup.html">Espace Créateur</a>
+      <button id="logout" class="ghost" type="button">Se déconnecter</button>
+    </nav>
+  </header>
+  <main>
+    <section id="authView" hidden>
+      <h1>Posez vos questions à NOVA IA</h1>
+      <p class="lead">Créez un compte : 10 crédits offerts, puis 5 crédits gratuits par jour.</p>
+      <div class="card">
+        <div class="tabs">
+          <button id="tabLogin" class="ghost on" type="button">Connexion</button>
+          <button id="tabRegister" class="ghost" type="button">Inscription</button>
+        </div>
+        <form id="authForm">
+          <label>Pseudo <input id="username" autocomplete="username" required minlength="3" maxlength="20"></label>
+          <label>Mot de passe <input id="password" type="password" autocomplete="current-password" required minlength="8" maxlength="72"></label>
+          <button id="authSubmit" type="submit">Se connecter</button>
+          <p id="authMsg" class="msg" role="alert"></p>
+        </form>
+      </div>
+    </section>
+
+    <section id="appView" hidden>
+      <div class="card">
+        <div class="row">
+          <h2>Votre question (1 crédit)</h2>
+          <button id="daily" class="ghost" type="button">Récupérer mes 5 crédits du jour</button>
+        </div>
+        <form id="askForm">
+          <label>Question <textarea id="prompt" maxlength="2000" required></textarea></label>
+          <button id="askBtn" type="submit">Envoyer</button>
+          <p id="askMsg" class="msg" role="alert"></p>
+        </form>
+        <p id="answer" class="answer" hidden></p>
+      </div>
+    </section>
+  </main>
+  <script src="/api.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>
